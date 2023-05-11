@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Popup GDPR Compliant</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/functions.js"></script>
+</head>
+<body>
+    <input type="checkbox" id="chk-technical" onclick="toggleConsent('technical')">
+    <label for="chk-technical">technical</label>
+    <br><br>
+    <input type="checkbox" id="chk-third-party" onclick="toggleConsent('third-party')">
+    <label for="chk-third-party">third-party</label>
+    <br><br>
+    <input type="checkbox" id="chk-ads" onclick="toggleConsent('ads')">
+    <label for="chk-ads">ads</label>
+    <br><br>
+    <input type="checkbox" id="chk-optional" onclick="toggleConsent('optional')">
+    <label for="chk-optional">optional</label>
+    <br><br>
+    <a onclick="alert(getAgreedTools())">Get Cookie info</a>
+</body>
+<script>
+    //document.cookie = 'consent='; //Reset Cookie
+   // alert(getAgreedTools()); //Affiche la liste des cookies
+    initCheckboxes()
+</script>
+</html>

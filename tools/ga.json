@@ -1,0 +1,4 @@
+{
+  "position": "bbt",
+  "script": "<script>alert('coucou')</script>"
+}
