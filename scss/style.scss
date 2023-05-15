@@ -3,4 +3,141 @@
   margin: 0;
   padding: 0;
 }
-body{background-color: red}
+#cookie-popup{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 30px;
+  gap: 20px;
+
+  width: 520px;
+  height: 558px;
+
+  background: #FFFFFF;
+  border: 1px solid #C5C5C5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+
+  font-family: 'Gotham', sans-serif;
+  font-style: normal;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+
+}
+
+#cookie-popup label {
+  color:#6A769E;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 27px;
+}
+#cookie-popup label span{
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 27px;
+}
+#cookie-popup p.description {
+  color: #000;
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 27px;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+#cookie-popup p.description.underlined {
+  border-bottom: 1px solid #C5C5C5;
+  margin-bottom: 30px;
+}
+
+#cookie-popup .submit-bt {
+  background-color: #FFDF00;
+  color: #25273A;
+  cursor:pointer;
+  float: right;
+  height: 54px;
+  line-height: 27px;
+  padding: 18px 40px;
+}
+#cookie-popup .submit-bt:hover {
+  color: #FFDF00;
+  background-color: #25273A;
+}
+
+body {background-color: antiquewhite}
+
+
+/* switch */
+/* The switch - the box around the slider */
+#cookie-popup .switch {
+  float: right;
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+#cookie-popup .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+#cookie-popup .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#cookie-popup .slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 6px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#cookie-popup input:checked + .slider {
+  background-color: #FFDF00;
+}
+#cookie-popup input:disabled + .slider {
+  background-color: #DFDFDF;
+  cursor: default;
+}
+
+#cookie-popup input:focus + .slider {
+  box-shadow: 0 0 1px #fff8cc;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 30px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

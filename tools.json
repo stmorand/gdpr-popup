@@ -1,6 +1,14 @@
 {
-  "technical" : ["GA"],
-  "third-party": [],
+  "technical" : [{
+    "name": "RQ",
+    "position": "bbt",
+    "script": "<script>alert('required tag')</script>"
+  }],
+  "third-party": [{
+    "name": "GA",
+    "position": "bbt",
+    "script": "<script>alert('GA tags')</script>"
+  }],
   "ads": [],
   "optional": []
 }

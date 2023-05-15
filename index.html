@@ -3,27 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Cookie Popup GDPR Compliant</title>
+    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/functions.js"></script>
 </head>
 <body>
-    <input type="checkbox" id="chk-technical" onclick="toggleConsent('technical')">
-    <label for="chk-technical">technical</label>
-    <br><br>
-    <input type="checkbox" id="chk-third-party" onclick="toggleConsent('third-party')">
-    <label for="chk-third-party">third-party</label>
-    <br><br>
-    <input type="checkbox" id="chk-ads" onclick="toggleConsent('ads')">
-    <label for="chk-ads">ads</label>
-    <br><br>
-    <input type="checkbox" id="chk-optional" onclick="toggleConsent('optional')">
-    <label for="chk-optional">optional</label>
-    <br><br>
-    <a onclick="alert(getAgreedTools())">Get Cookie info</a>
+
+
+    <div id="cookie-popup" style="display: none">
+        <div id="chk-technical-container">
+            <label for="chk-technical">Essentiels <span>Toujours actifs</span></label>
+            <label class="switch">
+                <input type="checkbox" id="chk-technical" disabled checked onclick="toggleConsent('technical')">
+                <span class="slider round"></span>
+            </label>
+            <p class="description underlined">Ces cookies sont indispensables pour le bon fonctionnement du site internet</p>
+        </div>
+        <div id="chk-third-party-container">
+            <label for="chk-third-party">Analyse</label>
+            <label class="switch">
+                <input type="checkbox" id="chk-third-party" onclick="toggleConsent('third-party')">
+                <span class="slider round"></span>
+            </label>
+            <p class="description">
+                Ces cookies permettent à l’exploitant du site internet de comprendre comment ce dernier fonctionne, la manière avec laquelle les visiteurs interagissent et remontent les éventuels problèmes techniques. Habituellement, ces cookies ne collectent pas d’information permettant d’identifier un visiteur.
+            </p>
+        </div>
+        <div id="chk-ads-container">
+            <label for="chk-ads">Ads</label>
+            <label class="switch">
+                <input type="checkbox" id="chk-ads" onclick="toggleConsent('ads')">
+                <span class="slider round"></span>
+            </label>
+            <p class="description underlined">Ces cookies sont nécessaire pour la pub...</p>
+        </div>
+        <div id="chk-optional-container">
+            <label for="chk-optional">Optional</label>
+            <label class="switch">
+                <input type="checkbox" id="chk-optional" onclick="toggleConsent('optional')">
+                <span class="slider round"></span>
+            </label>
+            <p class="description underlined">Ces cookies sont optionnels...</p>
+        </div>
+
+        <a class="submit-bt" onclick="confirmConsent()">Confirm choice</a>
+    </div>
 </body>
 <script>
+    init();
     //document.cookie = 'consent='; //Reset Cookie
-   // alert(getAgreedTools()); //Affiche la liste des cookies
-    initCheckboxes()
+    // alert(getAgreedTools()); //Affiche la liste des cookies
+
+
+    if (isConsentGiven())
+        setupTools();
+    else {
+        showCookiePopup();
+        initCheckboxes();
+    }
+
 </script>
 </html>
