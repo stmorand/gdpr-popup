@@ -1,13 +1,13 @@
 {
   "technical" : [{
     "name": "RQ",
-    "position": "bbt",
-    "script": "<script>alert('required tag')</script>"
+    "position": "abt",
+    "script": "console.log('required tag')"
   }],
   "third-party": [{
     "name": "GA",
-    "position": "bbt",
-    "script": "<script>alert('GA tags')</script>"
+    "position": "ht",
+    "script": "console.log('GA tag')"
   }],
   "ads": [],
   "optional": []

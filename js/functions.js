@@ -57,7 +57,12 @@ function removeConsent(consentType) {
 }
 
 function showCookiePopup() {
-    document.getElementById("cookie-popup").style.display = 'block';
+    document.getElementById("cookie-popup").classList.add("cookie-visible");
+    document.getElementById("cookie-popup").classList.remove("cookie-hidden");
+}
+function hideCookiePopup() {
+    document.getElementById("cookie-popup").classList.remove("cookie-visible");
+    document.getElementById("cookie-popup").classList.add("cookie-hidden");
 }
 
 function initCheckboxes() {
@@ -68,6 +73,7 @@ function initCheckboxes() {
 
 function confirmConsent() {
     document.cookie = 'consentConfirmed=' + Date.now();
+    hideCookiePopup();
     setupTools();
 }
 function isConsentGiven() {
@@ -94,6 +100,7 @@ function loadToolsJSON(callback) {
 }
 
 function init() {
+    giveConsent("technical");
     loadToolsJSON(function(response) {
         // Parse JSON string into object
         tools = JSON.parse(response);
@@ -112,6 +119,12 @@ function init() {
                 document.getElementById("chk-ads-container").style.display = (tools["ads"] !== null && tools["ads"].length > 0) ? "block" :"none";
                 document.getElementById("chk-optional-container").style.display = (tools["optional"] !== null && tools["optional"].length > 0) ? "block" :"none";
             }
+            if (isConsentGiven())
+                setupTools();
+            else {
+                showCookiePopup();
+                initCheckboxes();
+            }
         }
         getTools();
     });
@@ -120,4 +133,44 @@ function init() {
 /* When the consent is given the tools provided in tools folder are setup*/
 function setupTools() {
     console.log("setting up the tools");
+    if (isConsent("technical")) {
+        console.log("setting up the technical tools");
+        for (let i=0; i<tools["technical"].length;i++) {
+            setupTool(tools["technical"][i]["position"], tools["technical"][i]["script"])
+        }
+    }
+    if (isConsent("third-party")) {
+        console.log("setting up the third-party tools");
+        for (let i=0; i<tools["third-party"].length;i++) {
+            setupTool(tools["third-party"][i]["position"], tools["third-party"][i]["script"])
+        }
+    }
+    if (isConsent("ads")) {
+        console.log("setting up the ads tools");
+        for (let i=0; i<tools["ads"].length;i++) {
+            setupTool(tools["ads"][i]["position"], tools["ads"][i]["script"])
+        }
+    }
+    if (isConsent("optional")) {
+        console.log("setting up the optional tools");
+        for (let i=0; i<tools["ads"].length;i++) {
+            setupTool(tools["optional"][i]["position"], tools["optional"][i]["script"])
+        }
+    }
+}
+// scriptToAdd : script to add (once agreed)
+// position : header tag (ht), after body tag (abt), before end body tag (bebt)
+function setupTool(position, scriptToAdd) {
+    console.log("setup ", position, scriptToAdd);
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.innerText = scriptToAdd;
+    switch (position) {
+        case "abt": document.body.prepend(script);break;
+        case "bebt":document.body.appendChild(script);break;
+        case "ht":
+        default :
+            document.head.appendChild(script);
+            break;
+    }
 }

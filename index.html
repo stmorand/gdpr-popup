@@ -10,7 +10,7 @@
 <body>
 
 
-    <div id="cookie-popup" style="display: none">
+    <div id="cookie-popup" class="cookie-hidden">
         <div id="chk-technical-container">
             <label for="chk-technical">Essentiels <span>Toujours actifs</span></label>
             <label class="switch">
@@ -55,12 +55,7 @@
     // alert(getAgreedTools()); //Affiche la liste des cookies
 
 
-    if (isConsentGiven())
-        setupTools();
-    else {
-        showCookiePopup();
-        initCheckboxes();
-    }
+
 
 </script>
 </html>
