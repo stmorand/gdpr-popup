@@ -1,13 +1,13 @@
 {
   "technical" : [{
     "name": "RQ",
-    "position": "abt",
-    "script": "console.log('required tag')"
+    "position": "ht",
+    "script": "<script>alert('required tag')</script>"
   }],
   "third-party": [{
     "name": "GA",
     "position": "ht",
-    "script": "console.log('GA tag')"
+    "script": "<!-- Google tag (gtag.js) -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-P9ZH1453BR\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'G-P9ZH1453BR');\n</script>"
   }],
   "ads": [],
   "optional": []

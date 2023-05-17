@@ -161,16 +161,32 @@ function setupTools() {
 // scriptToAdd : script to add (once agreed)
 // position : header tag (ht), after body tag (abt), before end body tag (bebt)
 function setupTool(position, scriptToAdd) {
-    console.log("setup ", position, scriptToAdd);
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.innerText = scriptToAdd;
-    switch (position) {
-        case "abt": document.body.prepend(script);break;
-        case "bebt":document.body.appendChild(script);break;
-        case "ht":
-        default :
-            document.head.appendChild(script);
-            break;
+    let tempHTML = "<div>" + scriptToAdd + "</div>";
+
+    let range = document.createRange();
+// fait que le parent de la première div du document devient le nœud de contexte
+    range.selectNode(document.getElementsByTagName("div").item(0));
+    let documentFragment = range.createContextualFragment(tempHTML);
+
+
+    if (documentFragment.hasChildNodes()) {
+        let children = documentFragment.firstChild.childNodes;
+
+        for (var i = 0; i < children.length; i++) {
+            // faire quelque chose avec chaque enfant[i]
+            // NOTE: La liste est en ligne, l'ajout ou la suppression des enfants changera la liste
+            switch (position) {
+                case "abt":
+                    document.body.prepend(children[i]);
+                    break;
+                case "bebt":
+                    document.body.appendChild(children[i]);
+                    break;
+                case "ht":
+                default:
+                    document.head.appendChild(children[i]);
+                    break;
+            }
+        }
     }
 }
