@@ -2,13 +2,23 @@
   "technical" : [{
     "name": "RQ",
     "position": "ht",
-    "script": "<script>alert('required tag')</script>"
+    "script": "<script>console.log('required tag')</script>"
   }],
   "third-party": [{
-    "name": "GA",
+    "name": "TP",
     "position": "ht",
-    "script": "<!-- Google tag (gtag.js) -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-P9ZH1453BR\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'G-P9ZH1453BR');\n</script>"
+    "script": "<script>console.log('third-party tag')</script>"
   }],
-  "ads": [],
-  "optional": []
+  "ads": [
+    {
+      "name": "AD",
+      "position": "ht",
+      "script": "<script>console.log('ad tag')</script>"
+    }
+  ],
+  "optional": [{
+    "name": "OPT",
+    "position": "ht",
+    "script": "<script>console.log('opt tag')</script>"
+  }]
 }

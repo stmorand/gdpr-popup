@@ -1,4 +1,6 @@
-let tools;
+let tools; // tools to dynamically add
+
+/* return the content of a cookie */
 function getCookie(name){
     if(document.cookie.length === 0)
         return null;
@@ -15,18 +17,23 @@ function getCookie(name){
     }
     return null;
 }
+
+/* return the cookies user checked to agree (may not submitted yet though) */
 function getAgreedTools() {
     return getCookie('consent')!=null ? getCookie('consent').split('||') : 'no cookie';
 }
 
+/* reset the content of cookie consent content */
 function resetConsent(consent='') {
     document.cookie = 'consent=' + consent;
 }
 
+/* return if the user gave is consent for a certain type of tool */
 function isConsent(consentType) {
     return getAgreedTools().includes(consentType)
 }
 
+/* a consent is given? it will be removed. Otherwise it will be given */
 function toggleConsent(consentType) {
     console.log("***toggleConsent");
     if (isConsent(consentType)) {
@@ -43,10 +50,11 @@ function toggleConsent(consentType) {
 /*  "technical","third-party","ads","optional" */
 function giveConsent(consentType) {
     if (!isConsent(consentType)) {
-        resetConsent(consentType + "||" + getCookie('consent'))
+        resetConsent(consentType + (getCookie('consent')?"||" + getCookie('consent'):''))
     }
 }
 
+/*  remove consent for an app type */
 function removeConsent(consentType) {
     if (isConsent(consentType)) {
         let tempAgreedTools = getAgreedTools();
@@ -56,26 +64,31 @@ function removeConsent(consentType) {
     }
 }
 
+/* show the popup */
 function showCookiePopup() {
     document.getElementById("cookie-popup").classList.add("cookie-visible");
     document.getElementById("cookie-popup").classList.remove("cookie-hidden");
 }
+/* hide the popup */
 function hideCookiePopup() {
     document.getElementById("cookie-popup").classList.remove("cookie-visible");
     document.getElementById("cookie-popup").classList.add("cookie-hidden");
 }
 
+/* If the user didn't submit is consent, or want to show the popup again, the checkboxes are checked according to his previous choices */
 function initCheckboxes() {
     for (let i = 0; i < getAgreedTools().length; i++) {
         document.getElementById('chk-'+getAgreedTools()[i]).checked = true;
     }
 }
 
+/* After checking and unchecking, the user submit and a cookie is saved to let us know his/her choice */
 function confirmConsent() {
     document.cookie = 'consentConfirmed=' + Date.now();
     hideCookiePopup();
     setupTools();
 }
+/* check if the user gave and confirmed his/her consent */
 function isConsentGiven() {
     return getCookie('consentConfirmed')!=null
 }
@@ -83,9 +96,10 @@ function isConsentGiven() {
 /* retrieve, either by type, or all  */
 /* can be "technical", "third-party","ads","optional" or "all" */
 function getTools(toolType = "all") {
-    console.log(tools);
+    return toolType ==="all" ? tools : tools[toolType];
 }
 
+/* load the tools included in tools.json */
 function loadToolsJSON(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
@@ -99,8 +113,9 @@ function loadToolsJSON(callback) {
     xobj.send(null);
 }
 
+/* function called when loading index page */
 function init() {
-    giveConsent("technical");
+    giveConsent("technical"); //technical tools must be agreed
     loadToolsJSON(function(response) {
         // Parse JSON string into object
         tools = JSON.parse(response);
@@ -130,51 +145,45 @@ function init() {
     });
 }
 
-/* When the consent is given the tools provided in tools folder are setup*/
+/* When the consent is given the tools provided in tools.json are set up*/
 function setupTools() {
-    console.log("setting up the tools");
     if (isConsent("technical")) {
-        console.log("setting up the technical tools");
         for (let i=0; i<tools["technical"].length;i++) {
             setupTool(tools["technical"][i]["position"], tools["technical"][i]["script"])
         }
     }
     if (isConsent("third-party")) {
-        console.log("setting up the third-party tools");
         for (let i=0; i<tools["third-party"].length;i++) {
             setupTool(tools["third-party"][i]["position"], tools["third-party"][i]["script"])
         }
     }
     if (isConsent("ads")) {
-        console.log("setting up the ads tools");
         for (let i=0; i<tools["ads"].length;i++) {
             setupTool(tools["ads"][i]["position"], tools["ads"][i]["script"])
         }
     }
     if (isConsent("optional")) {
-        console.log("setting up the optional tools");
         for (let i=0; i<tools["ads"].length;i++) {
             setupTool(tools["optional"][i]["position"], tools["optional"][i]["script"])
         }
     }
 }
+
+// function to set up all the agreed tools
 // scriptToAdd : script to add (once agreed)
 // position : header tag (ht), after body tag (abt), before end body tag (bebt)
 function setupTool(position, scriptToAdd) {
     let tempHTML = "<div>" + scriptToAdd + "</div>";
 
     let range = document.createRange();
-// fait que le parent de la première div du document devient le nœud de contexte
+
     range.selectNode(document.getElementsByTagName("div").item(0));
     let documentFragment = range.createContextualFragment(tempHTML);
-
 
     if (documentFragment.hasChildNodes()) {
         let children = documentFragment.firstChild.childNodes;
 
         for (var i = 0; i < children.length; i++) {
-            // faire quelque chose avec chaque enfant[i]
-            // NOTE: La liste est en ligne, l'ajout ou la suppression des enfants changera la liste
             switch (position) {
                 case "abt":
                     document.body.prepend(children[i]);
