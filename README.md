@@ -4,7 +4,7 @@ GDPR popup is a script that helps manage GDPR consent
 ## author
 [Stephan] (https://stephanmorand.com)
 
-## stored cookies
+## stored cookies 
 The script stores 2 cookies on the user end :
 * consent : list of cookie types the user pre-consent (checked)
 * consentConfirmed : status that indicates if the consent was submitted.
