@@ -2,7 +2,7 @@
 GDPR popup is a script that helps manage GDPR consent
 
 ## author
-[Stephan] (https://stephanmorand.com)
+[Stephan] https://stephanmorand.com
 
 ## stored cookies 
 The script stores 2 cookies on the user end :
@@ -11,7 +11,7 @@ The script stores 2 cookies on the user end :
 
 No other cookies should be stored before consent is confirmed, unless technical
  
-## List of tools that need consent
+## list of tools that need consent
 * tools.json contains the tools that need the user consent.
 * Each tool can be categorized as technical, third-party, ads or optionnal
 * Each tool is defined by :
@@ -28,5 +28,5 @@ No other cookies should be stored before consent is confirmed, unless technical
         "script": "<script>console.log('required tag')</script>"
         }`
 
-## Style
+## style
 Style can be customized via scss/theme.scss (ie. css/theme.css)
