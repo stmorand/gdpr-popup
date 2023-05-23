@@ -151,6 +151,22 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.cookie-link {
+  cursor: pointer;
+  display: block;
+  opacity: 0.8;
+  position: fixed;
+  left: 4px;
+  bottom: 4px;
+  background-image: url("../img/cookie.png");
+  height: 64px;
+  width: 64px;
+}
+
+.cookie-link:hover {
+  opacity: 1;
+}
+
 @media only screen and (min-width: 768px) {
   #cookie-popup {
     margin: auto;
