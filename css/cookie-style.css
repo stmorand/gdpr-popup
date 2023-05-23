@@ -159,6 +159,7 @@ input:checked + .slider:before {
   left: 4px;
   bottom: 4px;
   background-image: url("../img/cookie.png");
+  background-size: contain;
   height: 64px;
   width: 64px;
 }
