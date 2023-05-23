@@ -114,7 +114,7 @@ function loadToolsJSON(callback) {
 }
 
 /* function called when loading index page */
-function init() {
+function initCookies() {
     giveConsent("technical"); //technical tools must be agreed
     loadToolsJSON(function(response) {
         // Parse JSON string into object
