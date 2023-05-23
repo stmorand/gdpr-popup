@@ -29,4 +29,4 @@ No other cookies should be stored before consent is confirmed, unless technical
         }`
 
 ## style
-Style can be customized via scss/theme.scss (ie. css/theme.css)
+Style can be customized via scss/cookie-theme.scss (ie. css/cookie-theme.css)
