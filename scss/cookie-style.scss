@@ -30,7 +30,7 @@
   flex-grow: 0;
   font-family: 'Gotham', sans-serif;
   font-style: normal;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 90%;
 }
@@ -148,7 +148,7 @@ input:checked + .slider:before {
 @media only screen and (min-width: 768px) {
   #cookie-popup {
     margin: auto;
-    position: absolute;
+    position: fixed;
     bottom: 12px;
     right: 12px;
     width: 520px;
