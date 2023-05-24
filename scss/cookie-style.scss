@@ -67,12 +67,22 @@
   height: 54px;
   line-height: 27px;
   padding: 18px 40px;
-  width: 100%;
   text-align: center;
 }
 #cookie-popup .submit-bt:hover {
   color: var(--primary-color);
   background-color: var(--dark-color);
+}
+
+#cookie-popup .submit-bt.accept-all {
+  background-color: white;
+  border: 2px solid var(--primary-color);
+  color: var(--dark-color);
+  margin-right:8px;
+}
+#cookie-popup .submit-bt.accept-all:hover {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
 }
 
 /* switch */

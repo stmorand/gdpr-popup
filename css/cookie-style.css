@@ -72,14 +72,33 @@
   height: 54px;
   line-height: 27px;
   padding: 18px 40px;
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
-#cookie-popup .submit-bt:hover {
+#cookie-popup .submit-bt:hover,
+#cookie-popup .submit-bt.accept-all:hover{
+  border-color: var(--dark-color);
   color: var(--primary-color);
   background-color: var(--dark-color);
 }
+
+#cookie-popup .submit-bt.accept-all {
+  background-color: white;
+  border: 2px solid var(--primary-color);
+  color: var(--dark-color);
+  float: none;
+  margin-top: 18px;
+}
+.cookie-policy-link {
+  color: var(--dark-color);
+  display: block;
+  font-size: 12px;
+  margin-top: 36px;
+  text-align: center;
+  width: 100%;
+}
+
 
 /* switch */
 /* The switch - the box around the slider */
@@ -186,8 +205,12 @@ input:checked + .slider:before {
   }
   #cookie-popup .submit-bt {
     float: right;
-    width: auto;
+    width: calc(50% - 9px);
     text-align: center;
+  }
+  #cookie-popup .submit-bt.accept-all {
+    margin-top: 0;
+    margin-right: 18px;
   }
 }
 

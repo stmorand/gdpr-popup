@@ -169,6 +169,14 @@ function setupTools() {
     }
 }
 
+function consentAll() {
+    giveConsent("technical");
+    giveConsent("third-party");
+    giveConsent("ads");
+    giveConsent("optional");
+    confirmConsent();
+}
+
 // function to set up all the agreed tools
 // scriptToAdd : script to add (once agreed)
 // position : header tag (ht), after body tag (abt), before end body tag (bebt)
