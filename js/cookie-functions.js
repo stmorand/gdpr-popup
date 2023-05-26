@@ -25,7 +25,7 @@ function getAgreedTools() {
 
 /* reset the content of cookie consent content */
 function resetConsent(consent='') {
-    document.cookie = 'consent=' + consent;
+    setCookie('consent', consent, 365);
 }
 
 /* return if the user gave is consent for a certain type of tool */
@@ -84,7 +84,7 @@ function initCheckboxes() {
 
 /* After checking and unchecking, the user submit and a cookie is saved to let us know his/her choice */
 function confirmConsent() {
-    document.cookie = 'consentConfirmed=' + Date.now();
+    setCookie('consentConfirmed', Date.now(),365);
     hideCookiePopup();
     setupTools();
 }
@@ -206,4 +206,11 @@ function setupTool(position, scriptToAdd) {
             }
         }
     }
+}
+
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
