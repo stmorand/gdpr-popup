@@ -1,5 +1,5 @@
 let tools; // tools to dynamically add
-
+let popupVisible;
 /* return the content of a cookie */
 function getCookie(name){
     if(document.cookie.length === 0)
@@ -66,13 +66,25 @@ function removeConsent(consentType) {
 
 /* show the popup */
 function showCookiePopup() {
+    popupVisible = true;
     document.getElementById("cookie-popup").classList.add("cookie-visible");
     document.getElementById("cookie-popup").classList.remove("cookie-hidden");
 }
 /* hide the popup */
 function hideCookiePopup() {
+    popupVisible = false;
     document.getElementById("cookie-popup").classList.remove("cookie-visible");
     document.getElementById("cookie-popup").classList.add("cookie-hidden");
+}
+
+function toggleCookiePopup() {
+    document.getElementById("cookie-arrow").classList.add("hidden");
+    if (popupVisible) {
+        hideCookiePopup()
+    }
+    else {
+        showCookiePopup();
+    }
 }
 
 /* If the user didn't submit is consent, or want to show the popup again, the checkboxes are checked according to his previous choices */
@@ -137,7 +149,8 @@ function initCookies() {
             if (isConsentGiven())
                 setupTools();
             else {
-                showCookiePopup();
+                //to uncomment, commented for demo purpose
+                //showCookiePopup();
                 initCheckboxes();
             }
         }

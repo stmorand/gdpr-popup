@@ -1,0 +1,154 @@
+/* Reset default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+  background-color: #f9f9f9;
+  color: #333;
+}
+.arrow {
+  display: block;
+  position: fixed;
+  left: 40px;
+  bottom: 80px;
+  background-image: url("../img/here.png");
+  background-size: contain;
+  height: 100px;
+  width: 140px;
+
+}
+.arrow.hidden {display: none;}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 40px 0;
+}
+
+h1 {
+  background-image: url("../img/cookie.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-top: 140px;
+  font-size: 36px;
+  color: rgba(0,0,0,0.7);
+  margin-bottom: 10px;
+  text-effect: outline;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+}
+
+a, a:visited {
+  color: #ff9800;
+}
+/* Main content */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+li {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* Feature blocks */
+.feature-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.feature-block__item {
+  flex: 0 0 calc(33.33% - 20px);
+  max-width: calc(33.33% - 20px);
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.feature-block__item:last-child {
+  margin-bottom: 0;
+}
+
+.feature-block__icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #ff9800; /* Sparkling color */
+}
+
+.feature-block__title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.feature-block__description {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Download button */
+.download-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: #ff9800; /* Sparkling color */
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #ffa726; /* Sparkling color */
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  color: #666;
+}
+footer p {
+  font-size: 12px;}
+/* Media queries */
+@media (max-width: 768px) {
+  .feature-block__item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
