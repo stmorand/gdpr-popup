@@ -1,58 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie Popup GDPR Compliant</title>
     <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+    <link rel="stylesheet" href="./css/demo.css">
     <link rel="stylesheet" href="./css/cookie-theme.css">
     <link rel="stylesheet" href="./css/cookie-style.css">
     <script src="js/cookie-functions.js"></script>
 </head>
 <body>
+<header>
+    <h1>Cookie Popup GDPR Compliant</h1>
+    <p>Une popup cookie fonctionnelle, prête à intégrer et à personnaliser </p>
+</header>
 
+<main>
+    <section>
+        <h2>Fonctionnalités</h2>
+        <div class="feature-block">
+            <div class="feature-block__item">
+                <i class="feature-block__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32"><path fill="currentColor" d="M28 30h-6a2.002 2.002 0 0 1-2-2V10a2.002 2.002 0 0 1 2-2h6a2.002 2.002 0 0 1 2 2v18a2.002 2.002 0 0 1-2 2zm-6-20v18h6V10zm-6-1l5.586-5.586L20.172 2L16 6.172L11.828 2l-1.414 1.414L16 9zm-6 21H4a2.002 2.002 0 0 1-2-2V10a2.002 2.002 0 0 1 2-2h6a2.002 2.002 0 0 1 2 2v18a2.002 2.002 0 0 1-2 2zM4 10v18h6V10z"/></svg>
+                </i>
+                <h3 class="feature-block__title">Intégration</h3>
+                <p class="feature-block__description">facile comme un copier/coller</p>
+            </div>
+            <div class="feature-block__item">
+                <i class="feature-block__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32"><path fill="currentColor" d="M27 22.141V18a2 2 0 0 0-2-2h-8v-4h2a2.002 2.002 0 0 0 2-2V4a2.002 2.002 0 0 0-2-2h-6a2.002 2.002 0 0 0-2 2v6a2.002 2.002 0 0 0 2 2h2v4H7a2 2 0 0 0-2 2v4.142a4 4 0 1 0 2 0V18h8v4.142a4 4 0 1 0 2 0V18h8v4.141a4 4 0 1 0 2 0ZM13 4h6l.001 6H13ZM8 26a2 2 0 1 1-2-2a2.002 2.002 0 0 1 2 2Zm10 0a2 2 0 1 1-2-2a2.003 2.003 0 0 1 2 2Zm8 2a2 2 0 1 1 2-2a2.002 2.002 0 0 1-2 2Z"/></svg>
+                </i>
+                <h3 class="feature-block__title">Catégorisation</h3>
+                <p class="feature-block__description">en fonction des types de cookie</p>
+            </div>
+            <div class="feature-block__item">
+                <i class="feature-block__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32"><path fill="currentColor" d="m29.707 19.293l-3-3a1 1 0 0 0-1.414 0L16 25.586V30h4.414l9.293-9.293a1 1 0 0 0 0-1.414ZM19.586 28H18v-1.586l5-5L24.586 23ZM26 21.586L24.414 20L26 18.414L27.586 20ZM18 18v-4h2v4zm-4 0v-6h2v6zm-4 0V8h2v10z"/><path fill="currentColor" d="M12 30H6a2.002 2.002 0 0 1-2-2V4a2.002 2.002 0 0 1 2-2h16a2.002 2.002 0 0 1 2 2v10h-2V4H6v24h6Z"/></svg>
+                </i>
+                <h3 class="feature-block__title">Personnalisation</h3>
+                <p class="feature-block__description">selon vos scripts et vos choix</p>
+            </div>
+        </div>
+    </section>
 
-    <div id="cookie-popup" class="cookie-hidden">
-        <div id="chk-technical-container">
-            <label for="chk-technical">Technical <span>required</span></label>
-            <label class="switch">
-                <input type="checkbox" id="chk-technical" disabled checked onclick="toggleConsent('technical')">
-                <span class="slider round"></span>
-            </label>
-            <p class="description underlined">Those cookies are required</p>
-        </div>
-        <div id="chk-third-party-container">
-            <label for="chk-third-party">Analytics</label>
-            <label class="switch">
-                <input type="checkbox" id="chk-third-party" onclick="toggleConsent('third-party')">
-                <span class="slider round"></span>
-            </label>
-            <p class="description underlined">
-                [...] Details about analytics cookies
-            </p>
-        </div>
-        <div id="chk-ads-container">
-            <label for="chk-ads">Ads</label>
-            <label class="switch">
-                <input type="checkbox" id="chk-ads" onclick="toggleConsent('ads')">
-                <span class="slider round"></span>
-            </label>
-            <p class="description underlined">
-                [...] Details about ads cookies</p>
-        </div>
-        <div id="chk-optional-container">
-            <label for="chk-optional">Optional</label>
-            <label class="switch">
-                <input type="checkbox" id="chk-optional" onclick="toggleConsent('optional')">
-                <span class="slider round"></span>
-            </label>
-            <p class="description underlined">[...] Details about optional cookies</p>
-        </div>
-        <a class="submit-bt" onclick="confirmConsent()">Confirm choice</a>
-        <a class="submit-bt accept-all" onclick="consentAll()">Accept All</a>
-        <a class="cookie-policy-link" href="#">politique de confidentialité</a>
+    <section>
+        <h2>Comment ça fonctionne</h2>
+        <p>Il suffit de télécharger le code source depuis Github et de suivre les instructions</p>
+        <p>Le détail complet sur le fonctionnement de ce code est disponible dans cette <a href="https://www.stephanmorand.com/comment-developper-une-fenetre-de-cookies-respectant-le-rgpd/">publication expliquant comment développer une fenêtre de cookies respectant le RGPD</a>.</p>
+    </section>
+
+    <section>
+        <h2>Téléchargement</h2>
+        <a href="https://github.com/stmorand/gdpr-popup?ref=stephanmorand.com" class="download-btn">Lien vers le dépôt GitHub</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2023 <a href="https://www.stephanmorand.com/">Stephan Morand</a> &middot; <a href="https://www.stephanmorand.com/about/">Qui suis-je ?</a> &middot; <a href="https://portfolio.morand.pro">Autres projets</a></p>
+</footer>
+
+<div id="cookie-popup" class="cookie-hidden">
+    <div id="chk-technical-container">
+        <label for="chk-technical">Technical <span>required</span></label>
+        <label class="switch">
+            <input type="checkbox" id="chk-technical" disabled checked onclick="toggleConsent('technical')">
+            <span class="slider round"></span>
+        </label>
+        <p class="description underlined">Those cookies are required</p>
     </div>
-    <a class="cookie-link" onclick="showCookiePopup()"></a>
+    <div id="chk-third-party-container">
+        <label for="chk-third-party">Analytics</label>
+        <label class="switch">
+            <input type="checkbox" id="chk-third-party" onclick="toggleConsent('third-party')">
+            <span class="slider round"></span>
+        </label>
+        <p class="description underlined">
+            [...] Details about analytics cookies
+        </p>
+    </div>
+    <div id="chk-ads-container">
+        <label for="chk-ads">Ads</label>
+        <label class="switch">
+            <input type="checkbox" id="chk-ads" onclick="toggleConsent('ads')">
+            <span class="slider round"></span>
+        </label>
+        <p class="description underlined">
+            [...] Details about ads cookies</p>
+    </div>
+    <div id="chk-optional-container">
+        <label for="chk-optional">Optional</label>
+        <label class="switch">
+            <input type="checkbox" id="chk-optional" onclick="toggleConsent('optional')">
+            <span class="slider round"></span>
+        </label>
+        <p class="description underlined">[...] Details about optional cookies</p>
+    </div>
+    <a class="submit-bt" onclick="confirmConsent()">Confirm choice</a>
+    <a class="submit-bt accept-all" onclick="consentAll()">Accept All</a>
+    <a class="cookie-policy-link" href="#">cookie policy</a>
+</div>
+<span id="cookie-arrow" class="arrow"></span>
+<a class="cookie-link" onclick="toggleCookiePopup()"></a>
+
 </body>
 <script>initCookies();</script>
 </html>
+
+
+<!--
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+                    <title>Cookie Popup GDPR Compliant</title>
+                    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+                    <link rel="stylesheet" href="./css/cookie-theme.css">
+                    <link rel="stylesheet" href="./css/cookie-style.css">
+                    <script src="js/cookie-functions.js"></script>
+                </head>
+                <body>
+                    <h1>Popup de consentement RGPD</h1>
+
+                    <div id="cookie-popup" class="cookie-hidden">
+                        <div id="chk-technical-container">
+                            <label for="chk-technical">Technical <span>required</span></label>
+                            <label class="switch">
+                                <input type="checkbox" id="chk-technical" disabled checked onclick="toggleConsent('technical')">
+                                <span class="slider round"></span>
+                            </label>
+                            <p class="description underlined">Those cookies are required</p>
+                        </div>
+                        <div id="chk-third-party-container">
+                            <label for="chk-third-party">Analytics</label>
+                            <label class="switch">
+                                <input type="checkbox" id="chk-third-party" onclick="toggleConsent('third-party')">
+                                <span class="slider round"></span>
+                            </label>
+                            <p class="description underlined">
+                                [...] Details about analytics cookies
+                            </p>
+                        </div>
+                        <div id="chk-ads-container">
+                            <label for="chk-ads">Ads</label>
+                            <label class="switch">
+                                <input type="checkbox" id="chk-ads" onclick="toggleConsent('ads')">
+                                <span class="slider round"></span>
+                            </label>
+                            <p class="description underlined">
+                                [...] Details about ads cookies</p>
+                        </div>
+                        <div id="chk-optional-container">
+                            <label for="chk-optional">Optional</label>
+                            <label class="switch">
+                                <input type="checkbox" id="chk-optional" onclick="toggleConsent('optional')">
+                                <span class="slider round"></span>
+                            </label>
+                            <p class="description underlined">[...] Details about optional cookies</p>
+                        </div>
+                        <a class="submit-bt" onclick="confirmConsent()">Confirm choice</a>
+                        <a class="submit-bt accept-all" onclick="consentAll()">Accept All</a>
+                        <a class="cookie-policy-link" href="#">cookie policy</a>
+                    </div>
+                    <a class="cookie-link" onclick="showCookiePopup()"></a>
+
+                    <div class="footer">
+                        <div><a href="https://stephanmorand.com"><img src="./img/logo-white.png" width="140" height="50" alt="logo stephan morand" /></a></div>
+                        <div><a href="https://www.stephanmorand.com/about/">Qui suis-je ?</a></div>
+                        <div><a href="https://portfolio.morand.pro">Autres projets</a></div>
+                        <div><a href="https://github.com/stmorand/gdpr-popup">Code source (github)</a></div>
+                    </div>
+                </body>
+                <script>initCookies();</script>
+                </html>
+
+                -->
